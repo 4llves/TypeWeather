@@ -4,13 +4,6 @@ import { useEffect, useState } from 'react';
 import { Input } from '../Input';
 import { CityProps, getCityByNameService } from '../../services/getCityByNameService';
 
-interface CityProps {
-  id: string;
-  name: string;
-  longitude: number;
-  latitude: number;
-}
-
 export function SelectCity({ onSelect }) {
   const [city, setCity] = useState<CityProps[]>([]);
   const [search, setSearch] = useState('');
