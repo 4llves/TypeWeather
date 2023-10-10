@@ -53,7 +53,12 @@ interface TodayProps {
   details: WeatherDetailsResponseProps;
 }
 
-export async function getWeatherByCity({ latitude, longitude }: GetWeatherByCityProps) {
+export interface GetWeatherByCityResponseProps {
+  today: TodayProps;
+  nextDays: NextDaysItemsProps[];
+}
+
+export async function getWeatherByCity({ latitude, longitude }: GetWeatherByCityProps): Promise<GetWeatherByCityResponseProps> {
   const { data } = await api.get<WeatherAPIResponseProps>(`/forecast?lat=${latitude}&lon=${longitude}`);
   console.log(data);
   const { main, weather, wind, pop } = data.list[0];
